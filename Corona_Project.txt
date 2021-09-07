@@ -1,0 +1,675 @@
+import java.sql.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.time.LocalDate;
+import java.time.Period;
+import javax.swing.*;
+public class Frames implements ActionListener {
+	JFrame f1,f2,f3,first,f4;
+	JPanel p1,p2,panel,p3,p4;
+	JLabel lab1,lab4,lab5,l14,l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12,label1,label2,label3,lr1,lr2,lr3,lr4,ls1;
+	JTextField tf1,tf2,tf3,t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,pf,user,lab2,tr1,tr2,tr4,ts1;
+	JButton b,b1,b2,b3,b4,bu,b5,b6,b7,bw,b_sub,b_search,b_exit,b_alert,b_reg,b_sub1,b_search1,b_exit1,b_alert1,b_sub2,b_exit2,b_search2;
+	JPasswordField p,tr3;
+	JTextArea t,ta1;
+	JScrollPane sp;
+	LocalDate dvacc,dpurc;
+	double quantity,vaccamont,charges;
+	String url="jdbc:mysql://localhost:3306/raja";
+	String uname="root";
+	String  pass="rajanaidu";
+	public Frames()
+	{
+		
+		JLabel la1 = new JLabel();
+		la1.setBounds(0,0,750,550);
+		ImageIcon icon1 = new ImageIcon("Images/blue-green.jpg");
+		la1.setIcon(icon1 );
+		
+		
+		
+		//password page
+		
+		first =new JFrame("RAJASOMANAIDU PROJECT");
+		first.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		first.setSize(750,500);
+		panel =new JPanel();
+		panel.setSize(890,790);
+		panel.setLayout(null);
+		label1 = new JLabel();
+		label1.setBounds(50,10,610,80);
+		label1.setForeground(Color.blue);
+		label1.setHorizontalAlignment(JLabel.CENTER);
+		label1.setText("RAJASOMANAIDU PROJECT");
+		label1.setFont(new Font("MV Boli",Font.BOLD,38));
+		label2 = new JLabel("User Name");
+		label2.setBounds(140,173,200,30);
+		label2.setForeground(Color.black);
+		label2.setHorizontalAlignment(JLabel.CENTER);
+		label2.setFont(new Font("Constantia",Font.BOLD,24));
+		user = new JTextField();
+		user.setFont(new Font("Constantia",Font.BOLD,24));
+		user.setBounds(350,170,200,30);
+		label3 = new JLabel("Password ");
+		label3.setBounds(140,230,200,30);
+		label3.setForeground(Color.black);
+		label3.setHorizontalAlignment(JLabel.CENTER);
+		label3.setFont(new Font("Constantia",Font.BOLD,26));
+		p = new JPasswordField();
+		p.setBounds(350,230,200,30);
+		p.setFont(new Font("MV Boli",Font.BOLD,26));
+		panel.add(label1);
+		panel.add(user);
+		panel.add(label2);
+		panel.add(p);
+		panel.add(label3);
+		b1= new JButton("Login");
+		b1.setBounds(580,420,90,30);
+		b1.setFocusable(false);
+		b1.setBackground(Color.green);
+		b1.setForeground(Color.black);
+		b1.setOpaque(true);
+		b1.setHorizontalAlignment(JLabel.CENTER);
+		b1.setOpaque(true);
+		b1.setFont( new Font("Cambria",Font.BOLD,20));
+		b1.addActionListener(this);
+		panel.add(b1);
+		b2= new JButton("Sign Up");
+		b2.setBounds(450,420,110,30);
+		b2.setFocusable(false);
+		b2.setBackground(Color.cyan);
+		b2.setForeground(Color.black);
+		b2.setOpaque(true);
+		b2.setHorizontalAlignment(JLabel.CENTER);
+		b2.setOpaque(true);
+		b2.setFont( new Font("Cambria",Font.BOLD,20));
+		b2.addActionListener(this);
+		panel.add(b2);
+		panel.add(la1);
+		first.add(panel);
+		first.setVisible(true);
+		
+		//Register Page
+		f2=new JFrame("RAJASOMANAIDU PROJECTS");
+		f2.setSize(750,500);
+		f2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		p2 =new JPanel();
+		p2.setLayout(null);
+		p2.setBackground(Color.gray);
+		
+		lr1 =new JLabel();
+		lr1.setBounds(20,140,340,30);
+		lr1.setForeground(Color.black);
+		lr1.setText("Full Name");
+		lr1.setFont(new Font("Combria",Font.BOLD,26));
+		p2.add(lr1);
+		
+		tr1=new JTextField();
+		tr1.setBounds(360,140,250,30);
+		tr1.setFont(new Font("Combria",Font.BOLD,16));
+		p2.add(tr1);
+		
+		lr2 =new JLabel();
+		lr2.setBounds(20,180,340,30);
+		lr2.setForeground(Color.black);
+		lr2.setText("Email");
+		lr2.setFont(new Font("Combria",Font.BOLD,26));
+		p2.add(lr2);
+		
+		tr2=new JTextField();
+		tr2.setBounds(360,180,250,30);
+		tr2.setFont(new Font("Combria",Font.BOLD,16));
+		p2.add(tr2);
+		
+		lr3 =new JLabel();
+		lr3.setBounds(20,220,340,30);
+		lr3.setForeground(Color.black);
+		lr3.setText("Password");
+		lr3.setFont(new Font("Combria",Font.BOLD,26));
+		p2.add(lr3);
+		
+		tr3=new JPasswordField();
+		tr3.setBounds(360,220,250,30);
+		tr3.setFont(new Font("Combria",Font.BOLD,16));
+		p2.add(tr3);
+		
+		lr4 =new JLabel();
+		lr4.setBounds(20,260,340,30);
+		lr4.setForeground(Color.black);
+		lr4.setText("Confirm Password");
+		lr4.setFont(new Font("Combria",Font.BOLD,26));
+		p2.add(lr4);
+		
+		tr4=new JTextField();
+		tr4.setBounds(360,260,250,30);
+		tr4.setFont(new Font("Combria",Font.BOLD,16));
+		p2.add(tr4);
+		
+		b_reg= new JButton("Login");
+		b_reg.setBounds(480,330,90,30);
+		b_reg.setFocusable(false);
+		b_reg.setBackground(Color.red);
+		b_reg.setForeground(Color.black);
+		b_reg.setOpaque(true);
+		b_reg.setHorizontalAlignment(JLabel.CENTER);
+		b_reg.setOpaque(true);
+		b_reg.setFont( new Font("Cambria",Font.BOLD,14));
+		b_reg.addActionListener(this);
+		p2.add(b_reg);
+		
+		JLabel la2 = new JLabel();
+		la2.setBounds(0,0,750,550);
+		la2.setIcon(icon1 );
+		p2.add(la2);
+		
+		f2.add(p2);
+		f2.setVisible(false);
+		
+		
+		//INSERTION PAGE
+		f1=new JFrame("RAJASOMANAIDU PROJECTS");
+		f1.setSize(750,550);
+		f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		p1 =new JPanel();
+		p1.setLayout(null);
+
+		
+		l1=new JLabel();
+		l2=new JLabel();
+		l3=new JLabel();
+		l4=new JLabel();
+		l5=new JLabel();
+		l6=new JLabel();
+		l7=new JLabel();
+		l8=new JLabel();
+		l9=new JLabel();
+		l10=new JLabel();
+		
+		t1=new JTextField();
+		t2=new JTextField();
+		t3=new JTextField();
+		t4=new JTextField();
+		t5=new JTextField();
+		t6=new JTextField();
+		t7=new JTextField();
+		t8=new JTextField();
+		t9=new JTextField();
+		t10=new JTextField();
+		
+		l1.setBounds(20,20,340,30);
+		l1.setForeground(Color.black);
+		l1.setText("Full Name");
+		l1.setFont(new Font("Cambria",Font.BOLD,26));
+		p1.add(l1);
+		
+		t1= new JTextField();
+		t1.setBounds(360,20,250,30);
+		t1.setFont(new Font("Cambria",Font.BOLD,16));
+		p1.add(t1);
+		
+		l2.setBounds(20,60,340,30);
+		l2.setForeground(Color.black);
+		l2.setText("Identity");
+		l2.setFont(new Font("Combria",Font.BOLD,26));
+		p1.add(l2);
+		
+		t2=new JTextField();
+		t2.setBounds(360,60,250,30);
+		t2.setFont(new Font("Combria",Font.BOLD,16));
+		p1.add(t2);
+		
+		l3.setBounds(20,100,340,30);
+		l3.setForeground(Color.black);
+		l3.setText("Gender");
+		l3.setFont(new Font("Combria",Font.BOLD,26));
+		p1.add(l3);
+		
+		t3=new JTextField();
+		t3.setBounds(360,100,250,30);
+		t3.setFont(new Font("Combria",Font.BOLD,16));
+		p1.add(t3);
+		
+		l4.setBounds(20,140,340,30);
+		l4.setForeground(Color.black);
+		l4.setText("Age");
+		l4.setFont(new Font("Combria",Font.BOLD,26));
+		p1.add(l4);
+		
+		t4=new JTextField();
+		t4.setBounds(360,140,250,30);
+		t4.setFont(new Font("Combria",Font.BOLD,16));
+		p1.add(t4);
+		
+		l5.setBounds(20,180,340,30);
+		l5.setForeground(Color.black);
+		l5.setText("Date to be Vaccination");
+		l5.setFont(new Font("Combria",Font.BOLD,26));
+		p1.add(l5);
+		
+		t5=new JTextField();
+		t5.setBounds(360,180,250,30);
+		t5.setFont(new Font("Combria",Font.BOLD,16));
+		p1.add(t5);
+		
+		l6.setBounds(20,220,340,30);
+		l6.setForeground(Color.black);
+		l6.setText("Dose Number");
+		l6.setFont(new Font("Combria",Font.BOLD,26));
+		p1.add(l6);
+		
+		t6=new JTextField();
+		t6.setBounds(360,220,250,30);
+		t6.setFont(new Font("Combria",Font.BOLD,16));
+		p1.add(t6);
+		
+		l7.setBounds(20,260,340,30);
+		l7.setForeground(Color.black);
+		l7.setText("Vaccine Amount");
+		l7.setFont(new Font("Combria",Font.BOLD,26));
+		p1.add(l7);
+		
+		t7=new JTextField();
+		t7.setBounds(360,260,250,30);
+		t7.setFont(new Font("Combria",Font.BOLD,16));
+		p1.add(t7);
+		
+		l8.setBounds(20,300,340,30);
+		l8.setForeground(Color.black);
+		l8.setText("Date to be Purchase");
+		l8.setFont(new Font("Combria",Font.BOLD,26));
+		p1.add(l8);
+		
+		t8=new JTextField();
+		t8.setBounds(360,300,250,30);
+		t8.setFont(new Font("Combria",Font.BOLD,16));
+		p1.add(t8);
+		
+		l9.setBounds(20,340,340,30);
+		l9.setForeground(Color.black);
+		l9.setText("Quantity");
+		l9.setFont(new Font("Combria",Font.BOLD,26));
+		p1.add(l9);
+		
+		t9=new JTextField();
+		t9.setBounds(360,340,250,30);
+		t9.setFont(new Font("Combria",Font.BOLD,16));
+		p1.add(t9);
+		
+		l10.setBounds(20,380,340,30);
+		l10.setForeground(Color.black);
+		l10.setText("Service Charges");
+		l10.setFont(new Font("Combria",Font.BOLD,26));
+		p1.add(l10);
+		
+		t10=new JTextField();
+		t10.setBounds(360,380,250,30);
+		t10.setFont(new Font("Combria",Font.BOLD,16));
+		p1.add(t10);
+		
+		b_alert= new JButton("Alert");
+		b_alert.setBounds(90,470,90,30);
+		b_alert.setFocusable(false);
+		b_alert.setBackground(Color.cyan);
+		b_alert.setForeground(Color.black);
+		b_alert.setOpaque(true);
+		b_alert.setHorizontalAlignment(JLabel.CENTER);
+		b_alert.setOpaque(true);
+		b_alert.setFont( new Font("Cambria",Font.BOLD,14));
+		b_alert.addActionListener(this);
+		p1.add(b_alert);
+		
+		b_sub= new JButton("Submit");
+		b_sub.setBounds(220,470,90,30);
+		b_sub.setFocusable(false);
+		b_sub.setBackground(Color.green);
+		b_sub.setForeground(Color.black);
+		b_sub.setOpaque(true);
+		b_sub.setHorizontalAlignment(JLabel.CENTER);
+		b_sub.setOpaque(true);
+		b_sub.setFont( new Font("Cambria",Font.BOLD,14));
+		b_sub.addActionListener(this);
+		p1.add(b_sub);
+		
+		b_search= new JButton("Search");
+		b_search.setBounds(350,470,90,30);
+		b_search.setFocusable(false);
+		b_search.setBackground(new Color(225,218,0));
+		b_search.setForeground(Color.black);
+		b_search.setOpaque(true);
+		b_search.setHorizontalAlignment(JLabel.CENTER);
+		b_search.setOpaque(true);
+		b_search.setFont( new Font("Cambria",Font.BOLD,14));
+		b_search.addActionListener(this);
+		p1.add(b_search);
+		
+		b_exit= new JButton("Exit");
+		b_exit.setBounds(480,470,90,30);
+		b_exit.setFocusable(false);
+		b_exit.setBackground(Color.red);
+		b_exit.setForeground(Color.black);
+		b_exit.setOpaque(true);
+		b_exit.setHorizontalAlignment(JLabel.CENTER);
+		b_exit.setOpaque(true);
+		b_exit.setFont( new Font("Cambria",Font.BOLD,14));
+		b_exit.addActionListener(this);
+		p1.add(b_exit);
+		
+		JLabel la3 = new JLabel();
+		la3.setBounds(0,0,750,550);
+		la3.setIcon(icon1 );
+		p1.add(la3);
+		f1.add(p1);
+		f1.setVisible(false);
+		
+		//Search page
+		f3=new JFrame("RAJASOMANAIDU PROJECTS");
+		f3.setSize(750,500);
+		f3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		p3 =new JPanel();
+		p3.setLayout(null);
+		p3.setBackground(Color.gray);
+		
+		ls1 =new JLabel();
+		ls1.setBounds(20,40,300,30);
+		ls1.setForeground(Color.black);
+		ls1.setText("Enter ID to Search");
+		ls1.setFont(new Font("Combria",Font.BOLD,26));
+		p3.add(ls1);
+		
+		ts1=new JTextField();
+		ts1.setBounds(320,40,250,30);
+		ts1.setFont(new Font("Combria",Font.BOLD,16));
+		p3.add(ts1);
+		
+		t = new JTextArea();
+		t.setBounds(25, 90, 685,305);
+		t.setBackground(Color.white);
+		t.setEditable(false);
+		t.setFont(new Font("Combria",Font.BOLD,26));
+		p3.add(t);
+		
+		b_search1= new JButton("Search");
+		b_search1.setBounds(600,40,90,30);
+		b_search1.setFocusable(false);
+		b_search1.setBackground(Color.orange);
+		b_search1.setForeground(Color.black);
+		b_search1.setOpaque(true);
+		b_search1.setHorizontalAlignment(JLabel.CENTER);
+		b_search1.setOpaque(true);
+		b_search1.setFont( new Font("Cambria",Font.BOLD,14));
+		b_search1.addActionListener(this);
+		p3.add(b_search1);
+		
+		b_alert1= new JButton("Alert");
+		b_alert1.setBounds(220,410,90,30);
+		b_alert1.setFocusable(false);
+		b_alert1.setBackground(Color.cyan);
+		b_alert1.setForeground(Color.black);
+		b_alert1.setOpaque(true);
+		b_alert1.setHorizontalAlignment(JLabel.CENTER);
+		b_alert1.setOpaque(true);
+		b_alert1.setFont( new Font("Cambria",Font.BOLD,14));
+		b_alert1.addActionListener(this);
+		p3.add(b_alert1);
+		
+		b_sub1= new JButton("Insert");
+		b_sub1.setBounds(350,410,90,30);
+		b_sub1.setFocusable(false);
+		b_sub1.setBackground(Color.green);
+		b_sub1.setForeground(Color.black);
+		b_sub1.setOpaque(true);
+		b_sub1.setHorizontalAlignment(JLabel.CENTER);
+		b_sub1.setOpaque(true);
+		b_sub1.setFont( new Font("Cambria",Font.BOLD,14));
+		b_sub1.addActionListener(this);
+		p3.add(b_sub1);
+		
+		b_exit1= new JButton("Exit");
+		b_exit1.setBounds(480,410,90,30);
+		b_exit1.setFocusable(false);
+		b_exit1.setBackground(Color.red);
+		b_exit1.setForeground(Color.black);
+		b_exit1.setOpaque(true);
+		b_exit1.setHorizontalAlignment(JLabel.CENTER);
+		b_exit1.setOpaque(true);
+		b_exit1.setFont( new Font("Cambria",Font.BOLD,14));
+		b_exit1.addActionListener(this);
+		p3.add(b_exit1);
+		
+		JLabel la4 = new JLabel();
+		la4.setBounds(0,0,750,550);
+		la4.setIcon(icon1 );
+		p3.add(la4);
+		f3.add(p3);
+		f3.setVisible(false);
+		
+		//Alert page
+		f4=new JFrame("RAJASOMANAIDU PROJECTS");
+		f4.setSize(750,500);
+		f4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f4.setLayout(null);
+		p4=new JPanel();
+		p4.setBounds(0,0,750,500);
+		p4.setLayout(null);
+		
+		ta1 = new JTextArea();
+		ta1.setEditable(false);
+		ta1.setBounds(10, 10, 710,370);
+		ta1.setBackground(Color.white);
+		ta1.setFont(new Font("Combria",Font.BOLD,26));
+		p4.add(ta1);
+		
+		b_search2= new JButton("Search");
+		b_search2.setBounds(220,410,90,30);
+		b_search2.setFocusable(false);
+		b_search2.setBackground(Color.orange);
+		b_search2.setForeground(Color.black);
+		b_search2.setOpaque(true);
+		b_search2.setHorizontalAlignment(JLabel.CENTER);
+		b_search2.setOpaque(true);
+		b_search2.setFont( new Font("Cambria",Font.BOLD,14));
+		b_search2.addActionListener(this);
+		p4.add(b_search2);
+
+		b_sub2= new JButton("Insert");
+		b_sub2.setBounds(350,410,90,30);
+		b_sub2.setFocusable(false);
+		b_sub2.setBackground(Color.green);
+		b_sub2.setForeground(Color.black);
+		b_sub2.setOpaque(true);
+		b_sub2.setHorizontalAlignment(JLabel.CENTER);
+		b_sub2.setOpaque(true);
+		b_sub2.setFont( new Font("Cambria",Font.BOLD,14));
+		b_sub2.addActionListener(this);
+		p4.add(b_sub2);
+		
+		b_exit2= new JButton("Exit");
+		b_exit2.setBounds(480,410,90,30);
+		b_exit2.setFocusable(false);
+		b_exit2.setBackground(Color.red);
+		b_exit2.setForeground(Color.black);
+		b_exit2.setOpaque(true);
+		b_exit2.setHorizontalAlignment(JLabel.CENTER);
+		b_exit2.setOpaque(true);
+		b_exit2.setFont( new Font("Cambria",Font.BOLD,14));
+		b_exit2.addActionListener(this);
+		p4.add(b_exit2);
+		JLabel la5 = new JLabel();
+		la5.setBounds(0,0,750,550);
+		la5.setIcon(icon1 );
+		p4.add(la5);
+		f4.add(p4);
+		f4.setVisible(false);
+	}
+	public void actionPerformed(ActionEvent e)
+	{
+		if(e.getSource()==b1)
+		{
+			String host1=user.getText();
+			String password = p.getText();
+			String query1 = "SELECT * FROM REGISTERS WHERE NAME='"+host1+"';";
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection con = DriverManager.getConnection(url,uname,pass);
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery(query1);
+				rs.next();
+				String password1=rs.getString(3);
+					if(password.equals(password1))
+					{
+						f1.setVisible(true);
+						first.setVisible(false);
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(first,"Invalid User Name and Password. \nHave No Account? Please Sign up");
+					}
+				st.close();
+				con.close();
+			}
+			catch (Exception e1) {
+				JOptionPane.showMessageDialog(first,"Invalid User Name and Password. \nHave No Account? Please Sign up");
+				
+			}
+		}
+		if(e.getSource()==b2) {
+			f2.setVisible(true);
+			first.setVisible(false);
+		}
+			
+			if(e.getSource()==b_reg)
+			{
+				String n=tr1.getText();
+				String email = tr2.getText();
+				String pas1 = tr3.getText();
+				String pas2 = tr4.getText();
+				if(!n.equals(email) && pas1.equals(pas2))
+				{
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+					String qu="insert into registers values('"+n+"','"+email+"','"+pas1+"');";
+					Connection con = DriverManager.getConnection(url,uname,pass);
+					Statement st = con.createStatement();
+					int c1 = st.executeUpdate(qu);
+					JOptionPane.showMessageDialog(f2,"You Registered");
+					st.close();
+					con.close();
+					int a=JOptionPane.showConfirmDialog(f2,"Are you ready to login?");
+					if(a==JOptionPane.YES_OPTION)
+					{
+						f1.setVisible(true);
+						f2.setVisible(false);
+					}
+				}
+				catch (Exception e2) {
+					JOptionPane.showMessageDialog(f2,"Invalid register \n try again..");
+				}
+				}
+				else {
+					JOptionPane.showMessageDialog(f2,"Invalid details");
+					tr3.setText(null);
+					tr4.setText(null);
+				}
+			}
+		if(e.getSource()==b_sub)
+		{
+			try {
+			String name,gender,id;
+			LocalDate dvacc,dpurc;
+			name=t1.getText();
+			gender=t3.getText();
+			id=t2.getText();
+			int age,dose,vamount,quantity,charges;
+			age=Integer.parseInt(t4.getText());
+			dose=Integer.parseInt(t6.getText());
+			dvacc=LocalDate.parse(t5.getText());
+			dpurc = LocalDate.parse(t8.getText());
+			vamount=Integer.parseInt(t7.getText());
+			quantity=Integer.parseInt(t9.getText());
+			charges=Integer.parseInt(t10.getText());
+			int total=vamount+charges;
+			String query = "insert into corona values('"+name+"','"+id+"','"+gender+"',"+age+",'"+dvacc+"',"+dose+","+vamount+",'"+dpurc+"',"+quantity+","+charges+","+total+");";
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection(url,uname,pass);
+			Statement st = con.createStatement();
+			int c = st.executeUpdate(query);
+			st.close();
+			con.close();
+			JOptionPane.showMessageDialog(f1,"You inserted a record Succesfully.");
+			}
+			catch(Exception exc)
+			{
+				JOptionPane.showMessageDialog(f1,"Invalid insertion try again..");
+			}
+			}
+		if(e.getSource()==b_search || e.getSource()==b_search2)
+		{
+			f3.setVisible(true);
+			f1.setVisible(false);
+		}
+		
+		if(e.getSource()==b_search1)
+		{
+			String id1 = ts1.getText();
+			String query3 = "SELECT * FROM CORONA WHERE ID='"+id1+"';";
+			try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection(url,uname,pass);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(query3);
+			while(rs.next())
+			{
+				LocalDate dv = LocalDate.parse(""+rs.getDate(5));
+				LocalDate dp = LocalDate.parse(""+rs.getDate(8));
+				LocalDate d = LocalDate.now();
+				Period period1 = Period.between(d, dv);
+				Period period2 = Period.between(d, dp);
+				String data=" "+(rs.getString(1)).toUpperCase()+" Have \n "+period2.getYears()+" Year(s),"+period2.getMonths()+" Month(s) and "+period2.getDays()+" Day(s) \n left to Purchase the Vaccine \n and \n "+period1.getYears()+" Year(s),"+period1.getMonths()+" Month(s) and "+period1.getDays()+" Day(s) \n left to take the Vaccine"+"\n Amount for Vaccine is "+rs.getInt("vaccine_amount")+" \n Service Charges are "+rs.getInt("charges")+" \n Total Amount is "+rs.getInt("total_amount");
+				t.setText(data);
+			}
+			st.close();
+			con.close();
+			}
+			catch(Exception ex1){
+					JOptionPane.showMessageDialog(f3,"Id is Invalid.");
+				}
+			}
+		if(e.getSource()==b_exit  || e.getSource()==b_exit1 || e.getSource()==b_exit2)
+		{
+			f1.dispose();
+			f3.dispose();
+			f4.dispose();
+		}
+		if(e.getSource()==b_alert || e.getSource()==b_alert1)
+		{
+			f4.setVisible(true);
+			f1.setVisible(false);
+			f3.setVisible(false);
+			
+			String query4 = "SELECT * FROM CORONA;";
+			try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection(url,uname,pass);
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(query4);
+			String da="Name \t ID \t Date of Vaccination \n";
+			while(rs.next())
+			{
+				da+=rs.getString("name")+"\t"+rs.getString("id")+"\t"+rs.getDate("date_of_vaccination")+"\n";
+			}
+			ta1.setText(da);
+			st.close();
+			con.close();
+			}
+			catch(Exception ex2){
+					JOptionPane.showMessageDialog(f3,""+"Something went wrong..");
+				}
+		}
+		if(e.getSource()==b_sub1 || e.getSource()==b_sub2)
+		{
+			f1.setVisible(true);
+			f4.setVisible(false);
+			f3.setVisible(false);
+		}
+		}
+	}
