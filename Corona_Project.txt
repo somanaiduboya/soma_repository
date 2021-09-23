@@ -20,7 +20,8 @@ public class Frames implements ActionListener {
 	String  pass="rajanaidu";
 	public Frames()
 	{
-		
+		Color foreground=new Color(37,78,88);
+		Color background=new Color(194,235,228);
 		JLabel la1 = new JLabel();
 		la1.setBounds(0,0,750,550);
 		ImageIcon icon1 = new ImageIcon("Images/blue-green.jpg");
@@ -38,13 +39,13 @@ public class Frames implements ActionListener {
 		panel.setLayout(null);
 		label1 = new JLabel();
 		label1.setBounds(50,10,610,80);
-		label1.setForeground(Color.blue);
+		label1.setForeground(foreground);
 		label1.setHorizontalAlignment(JLabel.CENTER);
 		label1.setText("RAJASOMANAIDU PROJECT");
 		label1.setFont(new Font("MV Boli",Font.BOLD,38));
 		label2 = new JLabel("User Name");
 		label2.setBounds(140,173,200,30);
-		label2.setForeground(Color.black);
+		label2.setForeground(foreground);
 		label2.setHorizontalAlignment(JLabel.CENTER);
 		label2.setFont(new Font("Constantia",Font.BOLD,24));
 		user = new JTextField();
@@ -52,7 +53,7 @@ public class Frames implements ActionListener {
 		user.setBounds(350,170,200,30);
 		label3 = new JLabel("Password ");
 		label3.setBounds(140,230,200,30);
-		label3.setForeground(Color.black);
+		label3.setForeground(foreground);
 		label3.setHorizontalAlignment(JLabel.CENTER);
 		label3.setFont(new Font("Constantia",Font.BOLD,26));
 		p = new JPasswordField();
@@ -85,7 +86,8 @@ public class Frames implements ActionListener {
 		b2.setFont( new Font("Cambria",Font.BOLD,20));
 		b2.addActionListener(this);
 		panel.add(b2);
-		panel.add(la1);
+		//panel.add(la1);
+		panel.setBackground(new Color(194,235,228));
 		first.add(panel);
 		first.setVisible(true);
 		
@@ -99,7 +101,7 @@ public class Frames implements ActionListener {
 		
 		lr1 =new JLabel();
 		lr1.setBounds(20,140,340,30);
-		lr1.setForeground(Color.black);
+		lr1.setForeground(foreground);
 		lr1.setText("Full Name");
 		lr1.setFont(new Font("Combria",Font.BOLD,26));
 		p2.add(lr1);
@@ -111,7 +113,7 @@ public class Frames implements ActionListener {
 		
 		lr2 =new JLabel();
 		lr2.setBounds(20,180,340,30);
-		lr2.setForeground(Color.black);
+		lr2.setForeground(foreground);
 		lr2.setText("Email");
 		lr2.setFont(new Font("Combria",Font.BOLD,26));
 		p2.add(lr2);
@@ -123,7 +125,7 @@ public class Frames implements ActionListener {
 		
 		lr3 =new JLabel();
 		lr3.setBounds(20,220,340,30);
-		lr3.setForeground(Color.black);
+		lr3.setForeground(foreground);
 		lr3.setText("Password");
 		lr3.setFont(new Font("Combria",Font.BOLD,26));
 		p2.add(lr3);
@@ -135,7 +137,7 @@ public class Frames implements ActionListener {
 		
 		lr4 =new JLabel();
 		lr4.setBounds(20,260,340,30);
-		lr4.setForeground(Color.black);
+		lr4.setForeground(foreground);
 		lr4.setText("Confirm Password");
 		lr4.setFont(new Font("Combria",Font.BOLD,26));
 		p2.add(lr4);
@@ -156,12 +158,7 @@ public class Frames implements ActionListener {
 		b_reg.setFont( new Font("Cambria",Font.BOLD,14));
 		b_reg.addActionListener(this);
 		p2.add(b_reg);
-		
-		JLabel la2 = new JLabel();
-		la2.setBounds(0,0,750,550);
-		la2.setIcon(icon1 );
-		p2.add(la2);
-		
+		p2.setBackground(background);
 		f2.add(p2);
 		f2.setVisible(false);
 		
@@ -197,7 +194,7 @@ public class Frames implements ActionListener {
 		t10=new JTextField();
 		
 		l1.setBounds(20,20,340,30);
-		l1.setForeground(Color.black);
+		l1.setForeground(foreground);
 		l1.setText("Full Name");
 		l1.setFont(new Font("Cambria",Font.BOLD,26));
 		p1.add(l1);
@@ -208,7 +205,7 @@ public class Frames implements ActionListener {
 		p1.add(t1);
 		
 		l2.setBounds(20,60,340,30);
-		l2.setForeground(Color.black);
+		l2.setForeground(foreground);
 		l2.setText("Identity");
 		l2.setFont(new Font("Combria",Font.BOLD,26));
 		p1.add(l2);
@@ -219,7 +216,7 @@ public class Frames implements ActionListener {
 		p1.add(t2);
 		
 		l3.setBounds(20,100,340,30);
-		l3.setForeground(Color.black);
+		l3.setForeground(foreground);
 		l3.setText("Gender");
 		l3.setFont(new Font("Combria",Font.BOLD,26));
 		p1.add(l3);
@@ -230,7 +227,7 @@ public class Frames implements ActionListener {
 		p1.add(t3);
 		
 		l4.setBounds(20,140,340,30);
-		l4.setForeground(Color.black);
+		l4.setForeground(foreground);
 		l4.setText("Age");
 		l4.setFont(new Font("Combria",Font.BOLD,26));
 		p1.add(l4);
@@ -241,7 +238,7 @@ public class Frames implements ActionListener {
 		p1.add(t4);
 		
 		l5.setBounds(20,180,340,30);
-		l5.setForeground(Color.black);
+		l5.setForeground(foreground);
 		l5.setText("Date to be Vaccination");
 		l5.setFont(new Font("Combria",Font.BOLD,26));
 		p1.add(l5);
@@ -252,7 +249,7 @@ public class Frames implements ActionListener {
 		p1.add(t5);
 		
 		l6.setBounds(20,220,340,30);
-		l6.setForeground(Color.black);
+		l6.setForeground(foreground);
 		l6.setText("Dose Number");
 		l6.setFont(new Font("Combria",Font.BOLD,26));
 		p1.add(l6);
@@ -263,7 +260,7 @@ public class Frames implements ActionListener {
 		p1.add(t6);
 		
 		l7.setBounds(20,260,340,30);
-		l7.setForeground(Color.black);
+		l7.setForeground(foreground);
 		l7.setText("Vaccine Amount");
 		l7.setFont(new Font("Combria",Font.BOLD,26));
 		p1.add(l7);
@@ -274,7 +271,7 @@ public class Frames implements ActionListener {
 		p1.add(t7);
 		
 		l8.setBounds(20,300,340,30);
-		l8.setForeground(Color.black);
+		l8.setForeground(foreground);
 		l8.setText("Date to be Purchase");
 		l8.setFont(new Font("Combria",Font.BOLD,26));
 		p1.add(l8);
@@ -285,7 +282,7 @@ public class Frames implements ActionListener {
 		p1.add(t8);
 		
 		l9.setBounds(20,340,340,30);
-		l9.setForeground(Color.black);
+		l9.setForeground(foreground);
 		l9.setText("Quantity");
 		l9.setFont(new Font("Combria",Font.BOLD,26));
 		p1.add(l9);
@@ -296,7 +293,7 @@ public class Frames implements ActionListener {
 		p1.add(t9);
 		
 		l10.setBounds(20,380,340,30);
-		l10.setForeground(Color.black);
+		l10.setForeground(foreground);
 		l10.setText("Service Charges");
 		l10.setFont(new Font("Combria",Font.BOLD,26));
 		p1.add(l10);
@@ -353,11 +350,7 @@ public class Frames implements ActionListener {
 		b_exit.setFont( new Font("Cambria",Font.BOLD,14));
 		b_exit.addActionListener(this);
 		p1.add(b_exit);
-		
-		JLabel la3 = new JLabel();
-		la3.setBounds(0,0,750,550);
-		la3.setIcon(icon1 );
-		p1.add(la3);
+		p1.setBackground(background);
 		f1.add(p1);
 		f1.setVisible(false);
 		
@@ -371,7 +364,7 @@ public class Frames implements ActionListener {
 		
 		ls1 =new JLabel();
 		ls1.setBounds(20,40,300,30);
-		ls1.setForeground(Color.black);
+		ls1.setForeground(foreground);
 		ls1.setText("Enter ID to Search");
 		ls1.setFont(new Font("Combria",Font.BOLD,26));
 		p3.add(ls1);
@@ -435,11 +428,7 @@ public class Frames implements ActionListener {
 		b_exit1.setFont( new Font("Cambria",Font.BOLD,14));
 		b_exit1.addActionListener(this);
 		p3.add(b_exit1);
-		
-		JLabel la4 = new JLabel();
-		la4.setBounds(0,0,750,550);
-		la4.setIcon(icon1 );
-		p3.add(la4);
+		p3.setBackground(background);
 		f3.add(p3);
 		f3.setVisible(false);
 		
@@ -494,10 +483,7 @@ public class Frames implements ActionListener {
 		b_exit2.setFont( new Font("Cambria",Font.BOLD,14));
 		b_exit2.addActionListener(this);
 		p4.add(b_exit2);
-		JLabel la5 = new JLabel();
-		la5.setBounds(0,0,750,550);
-		la5.setIcon(icon1 );
-		p4.add(la5);
+		p4.setBackground(background);
 		f4.add(p4);
 		f4.setVisible(false);
 	}
@@ -550,7 +536,7 @@ public class Frames implements ActionListener {
 					String qu="insert into registers values('"+n+"','"+email+"','"+pas1+"');";
 					Connection con = DriverManager.getConnection(url,uname,pass);
 					Statement st = con.createStatement();
-					int c1 = st.executeUpdate(qu);
+					st.executeUpdate(qu);
 					JOptionPane.showMessageDialog(f2,"You Registered");
 					st.close();
 					con.close();
@@ -606,6 +592,7 @@ public class Frames implements ActionListener {
 		{
 			f3.setVisible(true);
 			f1.setVisible(false);
+			f4.setVisible(false);
 		}
 		
 		if(e.getSource()==b_search1)
