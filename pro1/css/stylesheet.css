@@ -1,0 +1,21 @@
+
+.nav ul{
+    display:inline-flex;
+list-style:none;
+}
+.nav ul li{
+padding:15px;
+display:inline-flex;
+vertical-align:middle;
+}
+.nav ul li a
+{
+text-decoration:none;
+color:#adb5bd;
+padding:10px;
+}
+.nav a:hover{
+background-color:#adb5bd;
+border-radius:5px;
+color:rgb(0,0,0);
+}
